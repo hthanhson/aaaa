@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Item List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .item-list-container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .item-list {
+            width: 60%;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h1>Items</h1>
+    <div class="item-list-container">
+        <div class="item-list">
+            <h:form >
+                <h:dataTable value="#{itemBean.items}" var="item">
+                    <p:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Quantity</f:facet>
+                       <h:outputText  value="#{item.quantity}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Date</f:facet>
+                        <h:outputText value="#{item.date}"/>
+                    </p:column>
+                    <p:column headerText="xoa" actionListener="itemBean.delete(item)">
+                </h:dataTable>
+                <p:commandbutton value="Add?faces-redirect=true"  action="basic" >Add</p:commandbutton>
+            </h:form>
+        </div>
+        
+    </div>
+</h:body>
+</html>
